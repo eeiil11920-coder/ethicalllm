@@ -1,0 +1,14 @@
+# Secrets — never commit
+.env
+*.key
+*_secret*
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Local build artefacts
+*.log
+*.aux
+*.out

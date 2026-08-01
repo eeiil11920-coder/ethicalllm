@@ -1,0 +1,11 @@
+group1,group2,meandiff,p-adj,lower,upper,reject
+ChatGPT,Claude,0.92,0.4158,-0.5753,2.4153,False
+ChatGPT,DeepSeek,-0.7,0.6741,-2.1953,0.7953,False
+ChatGPT,Gemini,0.4,0.9406,-1.0953,1.8953,False
+ChatGPT,Grok,0.04,1.0,-1.4553,1.5353,False
+Claude,DeepSeek,-1.62,0.0277,-3.1153,-0.1247,True
+Claude,Gemini,-0.52,0.8593,-2.0153,0.9753,False
+Claude,Grok,-0.88,0.4609,-2.3753,0.6153,False
+DeepSeek,Gemini,1.1,0.2421,-0.3953,2.5953,False
+DeepSeek,Grok,0.74,0.6269,-0.7553,2.2353,False
+Gemini,Grok,-0.36,0.9589,-1.8553,1.1353,False

@@ -1,0 +1,6 @@
+RaterID,DialogueCode,Node,Awareness,Consistency,Ethics,Contradiction,Comments
+R1,D001,Node 1,,,,,
+R1,D001,Node 2,,,,,
+R1,D001,Node 3,,,,,
+R1,D001,Conclusion,,,,,
+R1,D001,Confirmation,,,,,

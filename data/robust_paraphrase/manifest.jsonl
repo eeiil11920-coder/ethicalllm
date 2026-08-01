@@ -1,0 +1,4 @@
+{"file": "openai__case01__without_context.jsonl", "provider": "openai", "model_label": "ChatGPT", "case_id": 1, "condition": "without_context", "branch_taken": {"node2": "2A", "node3": "3A"}, "api_model_ids": ["gpt-5-2025-08-07"]}
+{"file": "openai__case02__without_context.jsonl", "provider": "openai", "model_label": "ChatGPT", "case_id": 2, "condition": "without_context", "branch_taken": {"node2": "2A", "node3": "3A"}, "api_model_ids": ["gpt-5-2025-08-07"]}
+{"file": "openai__case03__without_context.jsonl", "provider": "openai", "model_label": "ChatGPT", "case_id": 3, "condition": "without_context", "branch_taken": {"node2": "2A", "node3": "3A"}, "api_model_ids": ["gpt-5-2025-08-07"]}
+{"file": "openai__case04__without_context.jsonl", "provider": "openai", "model_label": "ChatGPT", "case_id": 4, "condition": "without_context", "branch_taken": {"node2": "2A", "node3": "3B"}, "api_model_ids": ["gpt-5-2025-08-07"]}

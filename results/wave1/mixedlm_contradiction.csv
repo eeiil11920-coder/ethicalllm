@@ -1,0 +1,8 @@
+term,coef,se,z,p,ci_low,ci_high
+Intercept,9.64,0.1727,55.8304,0.0,9.3016,9.9784
+"C(ModelLabel, Treatment('ChatGPT'))[T.Claude]",0.08,0.2124,0.3767,0.7064,-0.3362,0.4962
+"C(ModelLabel, Treatment('ChatGPT'))[T.DeepSeek]",0.36,0.2124,1.6953,0.09,-0.0562,0.7762
+"C(ModelLabel, Treatment('ChatGPT'))[T.Gemini]",0.14,0.2124,0.6593,0.5097,-0.2762,0.5562
+"C(ModelLabel, Treatment('ChatGPT'))[T.Grok]",0.2,0.2124,0.9418,0.3463,-0.2162,0.6162
+Group Var,0.0626,0.05,1.2541,0.2098,-0.0353,0.1606
+Node Var,0.009,0.0479,0.188,0.8509,-0.0848,0.1028

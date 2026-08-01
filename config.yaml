@@ -1,0 +1,109 @@
+# =============================================================================
+# Wave-2 collection configuration — BUSI-D-26-01884 (Journal of Business Ethics)
+# =============================================================================
+# PROTOCOL: wave 2 uses the current REASONING/"thinking" variant of each
+# provider, mirroring wave 1 (o3, Claude 3.7 extended thinking, Gemini 2.5
+# Pro, Grok 3 Think, DeepSeek R1).
+#
+# Model ids drift. Before the real run, load your API keys (.env) and run
+#     python collect.py --list-models      (available ids per provider)
+#     python collect.py --check           (1-token credit/quota pre-check)
+# then confirm/update the `model:` fields. The EXACT model id RETURNED by
+# each API response is logged in every dialogue JSONL regardless of the
+# value configured here (e.g. DeepSeek returns `deepseek-v4-flash` for
+# `deepseek-reasoner` requests).
+#
+# Reasoning models and sampling: some reasoning models ignore or reject
+# temperature/max_tokens (OpenAI o-/gpt-5 series -> max_completion_tokens,
+# temperature fixed; Anthropic extended thinking -> temperature must not be
+# set). collect.py adapts automatically and records the EFFECTIVE parameters
+# and every adjustment in the dialogue log ("param_notes" in the result
+# record).
+
+run:
+  temperature: 0.7          # paper protocol (dropped+logged where unsupported)
+  max_tokens: 500           # paper protocol (per visible response)
+  runs_per_prompt: 1        # paper protocol
+  request_timeout_s: 300
+  max_retries: 5
+  backoff_base_s: 2.0       # exponential backoff: base * 2^attempt + jitter
+  # Rough token estimates used ONLY for the pre-run cost estimate
+  est_prompt_tokens_per_turn: 70
+  est_context_tokens: 130
+  est_response_tokens_per_turn: 450
+  # Reasoning models bill hidden thinking tokens; the cost estimate is
+  # multiplied by this safety factor for providers flagged `reasoning: true`.
+  reasoning_token_factor: 6
+
+nli:
+  model: roberta-large-mnli
+  device: auto              # auto -> cuda if available, else cpu
+  # theta (paper): the winning stance's NORMALISED entailment share
+  # p/(p_eth+p_perm) must exceed this, else Neutral.
+  entailment_threshold: 0.6
+  mixed_margin: 0.15        # normalised margin < this => Mixed (logged)
+  evidence_floor: 0.05      # max raw entailment below this => Neutral
+  contradiction_threshold: 0.7
+
+providers:
+  openai:
+    kind: openai            # native OpenAI SDK
+    env_key: OPENAI_API_KEY
+    base_url: null
+    model: gpt-5            # reasoning line (wave-1 used o3). CONFIRM the
+                            # newest reasoning id with --list-models.
+    label: ChatGPT
+    reasoning: true
+    price_per_mtok_input: 1.25
+    price_per_mtok_output: 10.0
+  anthropic:
+    kind: anthropic
+    env_key: ANTHROPIC_API_KEY
+    model: claude-sonnet-5  # current Sonnet WITH extended thinking enabled
+    label: Claude
+    reasoning: true
+    # Extended thinking decoding parameters. The Claude 5 family (verified
+    # 2026-07-31 against the live API) uses thinking.type=adaptive with
+    # output_config.effort and REJECTS a custom temperature ("deprecated");
+    # older models use thinking.type=enabled with budget_tokens. collect.py
+    # sends the configured mode, auto-falls back to the other shape on a 400,
+    # and logs every adjustment as a param note. budget_tokens doubles as the
+    # max_tokens headroom for reasoning output.
+    thinking:
+      mode: adaptive        # "adaptive" (Claude 5) | "enabled" (legacy budget)
+      effort: high          # output_config.effort — decoding parameter of record
+      budget_tokens: 4096   # legacy budget / max_tokens headroom
+    price_per_mtok_input: 3.0
+    price_per_mtok_output: 15.0
+  google:
+    kind: google
+    env_key: GOOGLE_API_KEY
+    model: gemini-pro-latest  # alias of the current Pro thinking model
+                              # (key currently lists gemini-3.1-pro-preview);
+                              # the resolved modelVersion is logged per turn.
+                              # NOTE: free-tier keys 429 on Pro until billing
+                              # is enabled (Flash works) — see --check.
+    label: Gemini
+    reasoning: true
+    price_per_mtok_input: 2.0
+    price_per_mtok_output: 12.0
+  xai:
+    kind: openai            # OpenAI-compatible endpoint
+    env_key: XAI_API_KEY
+    base_url: https://api.x.ai/v1
+    model: grok-4           # current reasoning Grok; confirm with --list-models
+    label: Grok
+    reasoning: true
+    price_per_mtok_input: 3.0
+    price_per_mtok_output: 15.0
+  deepseek:
+    kind: openai            # OpenAI-compatible endpoint
+    env_key: DEEPSEEK_API_KEY
+    base_url: https://api.deepseek.com
+    model: deepseek-reasoner  # thinking line (API may resolve to another id,
+                              # e.g. deepseek-v4-flash; the returned id is
+                              # what gets logged and reported)
+    label: DeepSeek
+    reasoning: true
+    price_per_mtok_input: 0.55
+    price_per_mtok_output: 2.19

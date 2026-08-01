@@ -1,0 +1,11 @@
+model_a,model_b,cohens_d
+ChatGPT,Claude,-0.561
+ChatGPT,DeepSeek,0.553
+ChatGPT,Gemini,-0.574
+ChatGPT,Grok,-0.399
+Claude,DeepSeek,1.34
+Claude,Gemini,0.024
+Claude,Grok,0.14
+DeepSeek,Gemini,-1.436
+DeepSeek,Grok,-1.06
+Gemini,Grok,0.128

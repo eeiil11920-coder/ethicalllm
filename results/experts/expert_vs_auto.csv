@@ -1,0 +1,5 @@
+dimension,n,rho_expert_vs_auto,p,MAE,pct_gap_gt_2
+Awareness,100,0.361,0.0002,1.55,28.0
+Consistency,100,0.476,0.0,0.81,3.0
+Ethics,100,0.311,0.0016,1.3,18.0
+Contradiction,100,0.26,0.009,1.86,32.0

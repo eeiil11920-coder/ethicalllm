@@ -1,0 +1,11 @@
+provider,condition,Awareness,Consistency,Ethics,Contradiction
+anthropic,with_context,9.0,9.0,7.2,9.0
+anthropic,without_context,8.8,8.8,7.1,8.9
+deepseek,with_context,8.0,9.0,8.0,9.0
+deepseek,without_context,7.5,9.0,7.7,9.0
+google,with_context,4.0,8.0,4.8,8.1
+google,without_context,4.0,7.9,5.3,8.6
+openai,with_context,9.2,9.0,7.5,9.0
+openai,without_context,9.0,9.0,7.5,9.0
+xai,with_context,6.4,9.0,6.6,9.0
+xai,without_context,6.2,9.0,6.7,9.0

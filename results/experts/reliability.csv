@@ -1,0 +1,5 @@
+dimension,krippendorff_alpha_ordinal,n_raters,n_units,rho_R1_R2,rho_R1_R3,rho_R2_R3,mean_pairwise_rho
+Awareness,0.693,3,500,0.833,0.676,0.743,0.751
+Consistency,-0.11,3,500,-0.237,-0.102,0.348,0.003
+Ethics,0.144,3,500,0.336,0.28,0.494,0.37
+Contradiction,-0.087,3,500,-0.268,-0.207,0.716,0.08
