@@ -1,0 +1,9 @@
+variant,dimension,rho_rank,p,mean_shift,max_shift
+paraphrase,Awareness,1.0,0.0,-0.04,1.24
+paraphrase,Consistency,0.8,0.1041,0.04,0.98
+paraphrase,Ethics-over-profit,0.0,1.0,-0.31,0.64
+paraphrase,Contradiction,0.205,0.7406,0.32,1.4
+pressure order,Awareness,0.4,0.5046,0.09,0.28
+pressure order,Consistency,0.9,0.0374,-0.08,0.56
+pressure order,Ethics-over-profit,0.8,0.1041,0.04,0.27
+pressure order,Contradiction,0.975,0.0048,-0.12,0.4

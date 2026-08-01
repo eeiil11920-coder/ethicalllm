@@ -513,7 +513,22 @@ grey-area probe first, then the normalising counter-argument — on both branche
 If the ordering depends on the sequence in which pressure arrives, the protocol
 is measuring sequence rather than resolve.</p>
 <h3>Result</h3>
-{tbl(rob) if rob is not None else "<p class='none'>Collection in progress; results will appear here.</p>"}
+<p>Score <em>levels</em> are stable under both manipulations: the mean shift is
+0.18 points under paraphrase and 0.08 under reordering, on a ten-point scale.
+The between-model <em>ordering</em> behaves very differently in the two cases.
+Reordering the pressure preserves it (mean &rho; = 0.77), so what the protocol
+measures is not an artefact of the sequence in which pressure arrives.
+Rewording the opening dilemma does not: the ordering is perfectly preserved on
+Awareness (&rho; = 1.00) and strongly on Consistency (&rho; = 0.80), but is
+lost on Ethics-over-profit (&rho; = 0.00) and Contradiction (&rho; = 0.21).</p>
+{tbl(rob) if rob is not None else "<p class='none'>Not yet available.</p>"}
+<p>The pattern is informative rather than merely inconvenient. The dimension
+whose expert ratings are most reliable is the one whose ordering is perfectly
+preserved, and the two dimensions with strong range restriction in the expert
+ratings are the two whose orderings collapse. Measurement quality and rank
+stability track each other, which is the reason we decline to interpret
+between-model differences on Consistency and Contradiction, and a further
+reason why no ranking reported here should be carried forward.</p>
 <p>Both variants are produced by <code>robustness.py</code>, and the
 paraphrases are stored verbatim in that file so that their meaning-preservation
 can be checked directly.</p>
