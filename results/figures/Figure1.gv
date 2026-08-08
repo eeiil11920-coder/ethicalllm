@@ -1,0 +1,86 @@
+// Figure 1 - Overview of the methodological framework
+//
+// Source recovered from ethic_2/validacion_expertos/methodology_flow_final.gv,
+// which carries phases 1-7 with labels identical to the published figure and
+// then continues into the expert-validation phases of the companion study.
+// Trimmed back here to the eight phases of this manuscript's Figure 1.
+//
+// Fix applied: the published raster read "DeepMind"; the evaluated system is
+// DeepSeek (see Table 1 and Section 3.3). The recovered source already had it
+// right, so the error only ever existed in the old PNG render.
+//
+// Render:  dot -Tpdf Figure1.gv -o Figure1.pdf
+
+digraph Methodology {
+	fontsize=10 nodesep=0.35 rankdir=TB ranksep=0.50 splines=ortho
+	node [fillcolor="#ffffff" shape=ellipse style=filled]
+
+	subgraph cluster_1 {
+		color="#d9d9d9" label="Phase 1  –  Theoretical Framework Review" style="rounded,filled"
+		A0 [label="START
+Research Design"]
+		A1 [label="AI-Ethics & LLM
+Consistency Literature
+Review"]
+		A0 -> A1
+	}
+	subgraph cluster_2 {
+		color="#e6e6e6" label="Phase 2  –  Ethical Dilemma Case Design" style="rounded,filled"
+		B1 [label="10 Step-by-Step
+Scenarios"]
+		B2 [label="Escalating Pressure
++ Contradiction Traps"]
+		B1 -> B2
+	}
+	subgraph cluster_3 {
+		color="#f2f2f2" label="Phase 3  –  Definition of Indicators" style="rounded,filled"
+		C1 [label="Awareness • Consistency
+Ethics > Profit
+Contradiction • Balance"]
+	}
+	subgraph cluster_4 {
+		color="#f7f7f7" label="Phase 4  –  Decision-Tree Prompt Framework" style="rounded,filled"
+		D1 [label="Branching Logic"]
+		D2 [label="Adaptive Follow-ups
+per LLM Answer"]
+		D1 -> D2
+	}
+	subgraph cluster_5 {
+		color="#d9d9d9" label="Phase 5  –  LLM Application" style="rounded,filled"
+		E0 [label="ChatGPT • Claude •
+Gemini • DeepSeek • Grok"]
+		E1 [label="10 Cases → 50 Dialogues"]
+		E2 [label="Save Transcripts
+(JSON / CSV)"]
+		E0 -> E1
+		E1 -> E2
+	}
+	subgraph cluster_6 {
+		color="#e6e6e6" label="Phase 6  –  Python Qualitative Analysis" style="rounded,filled"
+		F1 [label="Sentiment • Keywords
+NLI Contradiction"]
+		F2 [label="Indicator Scoring &
+Aggregate Metrics"]
+		F1 -> F2
+	}
+	subgraph cluster_7 {
+		color="#f2f2f2" label="Phase 7  –  Validation, Results & Discussion" style="rounded,filled"
+		G1 [label="Compare Model Scores"]
+		G2 [label="Interpret Strengths,
+Weaknesses, Implications"]
+		G1 -> G2
+	}
+	subgraph cluster_8 {
+		color="#ffffff" label="Phase 8  –  Conclusion" style="rounded,filled"
+		J0 [label="END
+Validated Insights"]
+	}
+
+	A1 -> B1
+	B2 -> C1
+	C1 -> D1
+	D2:e -> E0:w [constraint=false]
+	E2 -> F1
+	F2 -> G1
+	G2 -> J0
+}
